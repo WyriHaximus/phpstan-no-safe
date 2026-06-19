@@ -40,7 +40,7 @@ final readonly class NoSafeImplementationsRule implements Rule
 
             return [
                 RuleErrorBuilder::message(
-                    'Function ' . $functionName . ' is not allowed. Use the non-safe version instead.',
+                    'Function ' . $functionName . ' is not allowed. Use the non-safe version instead and follow PHPStan\'s warnings.',
                 )->identifier(
                     'wyrihaximus.no.safe.' . str_replace('_', '.', strtolower($bareFunctionName)),
                 )->build(),
