@@ -1,0 +1,5 @@
+services:
+  -
+    class: WyriHaximus\PHPStan\Rules\NoSafeImplementationsRule
+    tags:
+      - phpstan.rules.rule
