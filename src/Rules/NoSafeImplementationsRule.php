@@ -35,12 +35,12 @@ final readonly class NoSafeImplementationsRule implements Rule
 
         $functionName = $node->name->toString();
 
-        if (str_starts_with('Safe\\', $functionName)) {
+        if (str_starts_with($functionName, 'Safe\\')) {
             $bareFunctionName = substr($functionName, 5);
 
             return [
                 RuleErrorBuilder::message(
-                    'Function ' . $functionName . ' is not allowed. Use the non-safe version instead and follow PHPStan\'s warnings.',
+                    'Function "' . $functionName . '" is not allowed. Use "' . $bareFunctionName . '" instead and follow PHPStan\'s warnings.',
                 )->identifier(
                     'wyrihaximus.no.safe.' . str_replace('_', '.', strtolower($bareFunctionName)),
                 )->build(),
