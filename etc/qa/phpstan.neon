@@ -1,0 +1,14 @@
+parameters:
+	level: max
+	paths:
+		- ../../etc
+		- ../../src
+		- ../../tests
+	excludePaths:
+		- ../../tests/Rules/files/*
+	ergebnis:
+		noExtends:
+			classesAllowedToBeExtended:
+				- PHPStan\Testing\RuleTestCase
+includes:
+	- ../../extension.neon

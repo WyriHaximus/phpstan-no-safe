@@ -1,0 +1,56 @@
+{
+  "name": "wyrihaximus/phpstan-no-safe",
+  "description": "\u26d4\ud83d\udd10 PHPStan extension that detects and blocks any usage of `thecodingmachine/safe`",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4"
+  },
+  "require-dev": {
+    "jawira/case-converter": "^3.6",
+    "nikic/php-parser": "^5.6.1",
+    "phpstan/phpdoc-parser": "^2.2.0",
+    "wyrihaximus/makefiles": "^0.11.1",
+    "wyrihaximus/test-utilities": "^13.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\PHPStan\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WyriHaximus\\Tests\\PHPStan\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
+      "phpstan/extension-installer": true,
+      "wyrihaximus/makefiles": true,
+      "wyrihaximus/test-utilities": true
+    },
+    "platform": {
+      "php": "8.4.13"
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "phpstan": {
+      "includes": [
+        "extension.neon"
+      ]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "make on-install-or-update || true"
+    ],
+    "post-update-cmd": [
+      "make on-install-or-update || true"
+    ]
+  }
+}
