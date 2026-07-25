@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-echo json_decode('[]');
+use Safe\DateTimeImmutable;
 
 new DateTimeImmutable('now');

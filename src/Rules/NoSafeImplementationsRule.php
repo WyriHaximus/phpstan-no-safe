@@ -15,38 +15,51 @@ use function strtolower;
 use function substr;
 
 /**
- * This rule checks that functions from `thecodingmachine/safe` are used in code.
+ * This rule checks that functions and classes from `thecodingmachine/safe` are not used in code.
  *
- * @implements Rule<Node\Expr\FuncCall>
+ * @implements Rule<Node\Expr>
  */
 final readonly class NoSafeImplementationsRule implements Rule
 {
     public function getNodeType(): string
     {
-        return Node\Expr\FuncCall::class;
+        return Node\Expr::class;
     }
 
     /** @inheritDoc */
     public function processNode(Node $node, Scope $scope): array
     {
-        if (! $node->name instanceof Node\Name) {
+        if ($node instanceof Node\Expr\FuncCall && $node->name instanceof Node\Name) {
+            $kind = 'Function';
+            $name = $node->name->toString();
+        } elseif ($node instanceof Node\Expr\New_ && $node->class instanceof Node\Name) {
+            $kind = 'Class';
+            $name = $node->class->toString();
+        } elseif ($node instanceof Node\Expr\StaticCall && $node->class instanceof Node\Name) {
+            $kind = 'Class';
+            $name = $node->class->toString();
+        } elseif ($node instanceof Node\Expr\ClassConstFetch && $node->class instanceof Node\Name) {
+            $kind = 'Class';
+            $name = $node->class->toString();
+        } elseif ($node instanceof Node\Expr\Instanceof_ && $node->class instanceof Node\Name) {
+            $kind = 'Class';
+            $name = $node->class->toString();
+        } else {
             return [];
         }
 
-        $functionName = $node->name->toString();
-
-        if (str_starts_with($functionName, 'Safe\\')) {
-            $bareFunctionName = substr($functionName, 5);
-
-            return [
-                RuleErrorBuilder::message(
-                    'Function "' . $functionName . '" is not allowed. Use "' . $bareFunctionName . '" instead and follow PHPStan\'s warnings.',
-                )->identifier(
-                    'wyrihaximus.no.safe.' . str_replace('_', '.', strtolower($bareFunctionName)),
-                )->build(),
-            ];
+        if (! str_starts_with($name, 'Safe\\')) {
+            return [];
         }
 
-        return [];
+        $bareName = substr($name, 5);
+
+        return [
+            RuleErrorBuilder::message(
+                $kind . ' "' . $name . '" is not allowed. Use "' . $bareName . '" instead and follow PHPStan\'s warnings.',
+            )->identifier(
+                'wyrihaximus.no.safe.' . str_replace('_', '.', strtolower($bareName)),
+            )->build(),
+        ];
     }
 }
