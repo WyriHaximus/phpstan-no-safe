@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ae9b47fda82116dbde3effb67192589",
+    "content-hash": "2e0a15401969cb4580e7cecb5081a897",
     "packages": [],
     "packages-dev": [
         {
@@ -8555,16 +8555,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.14.7",
+            "version": "0.15.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "fadcb1109c119db9746a9679b40588db90baa106"
+                "reference": "21be5310453805572de6592637df7905cefadb10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/fadcb1109c119db9746a9679b40588db90baa106",
-                "reference": "fadcb1109c119db9746a9679b40588db90baa106",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/21be5310453805572de6592637df7905cefadb10",
+                "reference": "21be5310453805572de6592637df7905cefadb10",
                 "shasum": ""
             },
             "require": {
@@ -8576,7 +8576,7 @@
                 "infection/infection": "<0.32.0"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^14.1.0"
+                "wyrihaximus/test-utilities": "^14.5.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -8605,7 +8605,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.7"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.15.4"
             },
             "funding": [
                 {
@@ -8613,7 +8613,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-01T06:26:20+00:00"
+            "time": "2026-10-15T16:12:42+00:00"
         },
         {
             "name": "wyrihaximus/qa-tooling-wrapper",
